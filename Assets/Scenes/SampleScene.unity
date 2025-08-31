@@ -374,7 +374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Scale
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Delete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1377,6 +1377,7 @@ GameObject:
   - component: {fileID: 1101784523}
   - component: {fileID: 1101784522}
   - component: {fileID: 1101784521}
+  - component: {fileID: 1101784525}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1399,7 +1400,7 @@ MonoBehaviour:
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  m_RaycastPrefab: {fileID: 0}
+  m_RaycastPrefab: {fileID: 580763588603750623, guid: ec43c470a5e8c3e44a4f0b3646814770, type: 3}
 --- !u!114 &1101784522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,7 +1433,7 @@ MonoBehaviour:
   m_Camera: {fileID: 439276570}
   m_OriginBaseGameObject: {fileID: 1101784520}
   m_CameraFloorOffsetObject: {fileID: 475746578}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
 --- !u!4 &1101784524
 Transform:
@@ -1450,6 +1451,34 @@ Transform:
   - {fileID: 475746579}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101784525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101784520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe554d667acd56c4cac13ea25bf8d549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arSessionOrigin: {fileID: 0}
+  raycastManager: {fileID: 1101784521}
+  planeManager: {fileID: 1101784522}
+  arCamera: {fileID: 439276570}
+  modelButtonParent: {fileID: 0}
+  modelButtonPrefab: {fileID: 6369541986840793502, guid: e9b5ee1f94087e34bacba7ba4ef7877c, type: 3}
+  controlPanel: {fileID: 1615211865}
+  rotateButton: {fileID: 58838742}
+  scaleButton: {fileID: 509914469}
+  deleteButton: {fileID: 874161916}
+  backButton: {fileID: 0}
+  modelDatabase: {fileID: 0}
+  rotationSpeed: 100
+  scaleSpeed: 0.5
+  minScale: 0.1
+  maxScale: 2
 --- !u!1 &1176492379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Rotate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
