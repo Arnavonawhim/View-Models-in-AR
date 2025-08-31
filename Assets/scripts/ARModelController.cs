@@ -166,7 +166,12 @@ public class ARModelController : MonoBehaviour
                 float scaleDelta = deltaDistance * scaleSpeed * Time.deltaTime;
                 
                 Vector3 newScale = selectedModel.transform.localScale + Vector3.one * scaleDelta;
-                newScale = Vector3.Clamp(newScale, Vector3.one * minScale, Vector3.one * maxScale);
+                newScale = new Vector3(
+                    Mathf.Clamp(newScale.x, minScale, maxScale),
+                    Mathf.Clamp(newScale.y, minScale, maxScale),
+                    Mathf.Clamp(newScale.z, minScale, maxScale)
+                );
+
                 selectedModel.transform.localScale = newScale;
             }
             
