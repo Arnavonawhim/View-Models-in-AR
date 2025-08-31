@@ -1,0 +1,33 @@
+# Unity / common
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/UserSettings/
+/MemoryCaptures/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Visual Studio
+.vs/
+*.csproj
+*.sln
+*.unityproj
+
+# Build outputs
+*.apk
+*.aab
+*.xcodeproj
+*.xcworkspace
+
