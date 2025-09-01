@@ -67,15 +67,47 @@ public class ARModelController : MonoBehaviour
         });
         
         deleteButton.onClick.AddListener(DeleteSelectedModel);
-        backButton.onClick.AddListener(() => GameManager.Instance.LoadMainMenu());
+        backButton.onClick.AddListener(() => {
+            Debug.Log("Back button clicked - Loading Main Menu");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Load scene 0 (MainMenu)
+        });
     }
     
     void CreateModelButtons()
     {
+        // Debug check
+        if (modelDatabase == null)
+        {
+            Debug.LogError("ModelDatabase is not assigned!");
+            return;
+        }
+        
+        if (modelButtonParent == null)
+        {
+            Debug.LogError("Model Button Parent is not assigned!");
+            return;
+        }
+        
+        if (modelButtonPrefab == null)
+        {
+            Debug.LogError("Model Button Prefab is not assigned!");
+            return;
+        }
+        
+        Debug.Log($"Creating {modelDatabase.availableModels.Length} model buttons");
+        
         foreach (ModelData model in modelDatabase.availableModels)
         {
+            Debug.Log($"Creating button for: {model.modelName}");
+            
             GameObject buttonObj = Instantiate(modelButtonPrefab, modelButtonParent);
             Button button = buttonObj.GetComponent<Button>();
+            
+            if (button == null)
+            {
+                Debug.LogError("Button component not found on model button prefab!");
+                continue;
+            }
             
             // Setup button appearance
             Text buttonText = buttonObj.GetComponentInChildren<Text>();
@@ -84,14 +116,21 @@ public class ARModelController : MonoBehaviour
             
             if (buttonText != null)
                 buttonText.text = model.modelName;
+            else
+                Debug.LogWarning("Button text component not found!");
                 
             if (model.thumbnailSprite != null && buttonImage != null)
                 buttonImage.sprite = model.thumbnailSprite;
             
             // Setup button functionality
             ModelData capturedModel = model; // Capture for closure
-            button.onClick.AddListener(() => SelectModelToPlace(capturedModel));
+            button.onClick.AddListener(() => {
+                Debug.Log($"Model button clicked: {capturedModel.modelName}");
+                SelectModelToPlace(capturedModel);
+            });
         }
+        
+        Debug.Log("Model buttons creation completed");
     }
     
     void SetupARPlane()
@@ -199,7 +238,6 @@ public class ARModelController : MonoBehaviour
                     Mathf.Clamp(newScale.y, minScale, maxScale),
                     Mathf.Clamp(newScale.z, minScale, maxScale)
                 );
-
                 selectedModel.transform.localScale = newScale;
                 
                 lastTouchDistance = currentDistance;
