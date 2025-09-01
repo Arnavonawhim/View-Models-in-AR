@@ -50,6 +50,18 @@ public class ARModelController : MonoBehaviour
         HandleModelPlacement();
     }
     
+    public class CameraDebug : MonoBehaviour
+    {
+        void Start()
+        {
+            Camera cam = GetComponent<Camera>();
+            Debug.Log($"Camera enabled: {cam.enabled}");
+            Debug.Log($"Camera depth: {cam.depth}");
+            
+            ARCameraBackground bg = GetComponent<ARCameraBackground>();
+            Debug.Log($"AR Camera Background enabled: {bg.enabled}");
+        }
+    }   
     void SetupUI()
     {
         controlPanel.SetActive(false);
