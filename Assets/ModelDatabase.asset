@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6194baba701657843ba47da839e25b37, type: 3}
+  m_Name: ModelDatabase
+  m_EditorClassIdentifier: 
+  availableModels:
+  - modelName: Chair
+    modelPrefab: {fileID: 9133984062457853599, guid: 851782d68e7f42e4897487dce60ac377, type: 3}
+    thumbnailSprite: {fileID: 0}
+    modelMaterial: {fileID: 0}
+  - modelName: Gaming PC
+    modelPrefab: {fileID: 4891266762365508924, guid: 233ee1bf421fe274abdd8dcccb8644d8, type: 3}
+    thumbnailSprite: {fileID: 0}
+    modelMaterial: {fileID: 0}
+  - modelName: Normal Monitor
+    modelPrefab: {fileID: 8065064869219535443, guid: 96808a20ad1fa44488039a46b8617c67, type: 3}
+    thumbnailSprite: {fileID: 0}
+    modelMaterial: {fileID: 0}
