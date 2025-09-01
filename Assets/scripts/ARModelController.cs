@@ -109,18 +109,35 @@ public class ARModelController : MonoBehaviour
                 continue;
             }
             
-            // Setup button appearance
+            // Find and setup button text
             Text buttonText = buttonObj.GetComponentInChildren<Text>();
-            Image[] images = buttonObj.GetComponentsInChildren<Image>();
-            Image buttonImage = images.Length > 1 ? images[1] : null; // Second image is thumbnail
-            
             if (buttonText != null)
+            {
                 buttonText.text = model.modelName;
+                buttonText.fontSize = 12;
+                buttonText.alignment = TextAnchor.MiddleCenter;
+            }
             else
+            {
                 Debug.LogWarning("Button text component not found!");
-                
-            if (model.thumbnailSprite != null && buttonImage != null)
-                buttonImage.sprite = model.thumbnailSprite;
+            }
+            
+            // Find and setup thumbnail image (look for Image component named ThumbnailImage)
+            Image thumbnailImage = null;
+            Image[] images = buttonObj.GetComponentsInChildren<Image>();
+            foreach (Image img in images)
+            {
+                if (img.gameObject.name == "ThumbnailImage")
+                {
+                    thumbnailImage = img;
+                    break;
+                }
+            }
+            
+            if (thumbnailImage != null && model.thumbnailSprite != null)
+            {
+                thumbnailImage.sprite = model.thumbnailSprite;
+            }
             
             // Setup button functionality
             ModelData capturedModel = model; // Capture for closure
@@ -131,6 +148,9 @@ public class ARModelController : MonoBehaviour
         }
         
         Debug.Log("Model buttons creation completed");
+        
+        // Force layout rebuild
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(modelButtonParent.GetComponent<RectTransform>());
     }
     
     void SetupARPlane()
@@ -238,6 +258,7 @@ public class ARModelController : MonoBehaviour
                     Mathf.Clamp(newScale.y, minScale, maxScale),
                     Mathf.Clamp(newScale.z, minScale, maxScale)
                 );
+
                 selectedModel.transform.localScale = newScale;
                 
                 lastTouchDistance = currentDistance;
